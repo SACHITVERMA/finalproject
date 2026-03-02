@@ -56,11 +56,22 @@ CORS(app, resources={r"/*": {"origins": "*"}}, support_credentials=True)
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 # --- DATABASE CONNECTION POOL ---
+# db_config = {
+#     "host": os.getenv("DB_HOST", "localhost"),
+#     "user": os.getenv("DB_USER", "root"),
+#     "password": os.getenv("DB_PASSWORD"),
+#     "database": "college_db"
+# }
+
+# app.py mein db_config ko aise update karein
 db_config = {
-    "host": os.getenv("DB_HOST", "localhost"),
-    "user": os.getenv("DB_USER", "root"),
+    "host": os.getenv("DB_HOST"),
+    "user": os.getenv("DB_USER"),
     "password": os.getenv("DB_PASSWORD"),
-    "database": "college_db"
+    "port": int(os.getenv("DB_PORT", 21043)),
+    "database": "defaultdb",
+    "ssl_ca": "ca.pem", # SSL support for Aiven
+    "ssl_disabled": False
 }
 
 # Connection Pool Creation (20 Connections set)
@@ -1375,4 +1386,5 @@ def result_page():
     return render_template('result.html')
 
 if __name__ == '__main__':
+
     app.run(port=5000, debug=True)
