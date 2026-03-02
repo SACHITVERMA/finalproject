@@ -1,7 +1,7 @@
 import os
 import uuid
 import mysql.connector
-from numpy import roll
+
 import pandas as pd 
 import smtplib
 import threading
@@ -1388,3 +1388,4 @@ def result_page():
 if __name__ == '__main__':
 
     app.run(port=5000, debug=True)
+
