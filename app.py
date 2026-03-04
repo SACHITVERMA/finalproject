@@ -69,7 +69,8 @@ db_config = {
     "password": os.getenv("DB_PASSWORD"),
     "port": int(os.getenv("DB_PORT", 21043)),
     "database": "defaultdb",
-    "ssl_ca": "ca.pem", # SSL support for Aiven
+    # "ssl_ca": "ca.pem", # SSL support for Aiven
+    "ssl_ca": os.path.join(os.getcwd(), "ca.pem")
     "ssl_disabled": False
 }
 
@@ -1387,6 +1388,7 @@ def result_page():
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=port)
+
 
 
 
