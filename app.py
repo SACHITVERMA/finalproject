@@ -1,7 +1,6 @@
 import os
 import uuid
 import mysql.connector
-
 import pandas as pd 
 import smtplib
 import threading
@@ -1388,5 +1387,6 @@ def result_page():
 if __name__ == '__main__':
 
     app.run(host='0.0.0.0', port=port)
+
 
 
